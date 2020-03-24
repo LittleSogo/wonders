@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table name="T_USER_ROLE"><field name="ID" nullable="false" size="10" type="INT"/><field name="REMARKS" nullable="true" size="1000" type="VARCHAR"/><field name="ROLE_ID" nullable="true" size="10" type="INT"/><field name="USER_ID" nullable="true" size="10" type="INT"/></table>

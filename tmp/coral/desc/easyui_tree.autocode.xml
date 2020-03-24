@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table name="EASYUI_TREE"><field name="ID" nullable="false" size="255" type="VARCHAR"/><field name="CHECKED" nullable="true" size="32" type="VARCHAR"/><field name="ICONCLS" nullable="true" size="32" type="VARCHAR"/><field name="PARENTID" nullable="true" size="32" type="VARCHAR"/><field name="TEXT" nullable="true" size="100" type="VARCHAR"/><field name="URL" nullable="true" size="32" type="VARCHAR"/><field name="LAST_MODIFIED" nullable="true" size="19" type="TIMESTAMP"/></table>

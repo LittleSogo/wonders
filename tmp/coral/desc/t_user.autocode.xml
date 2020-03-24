@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table name="T_USER"><field name="ID" nullable="false" size="10" type="INT"/><field name="PASSWORD" nullable="false" size="100" type="VARCHAR"/><field name="REMARKS" nullable="true" size="1000" type="VARCHAR"/><field name="USER_NAME" nullable="false" size="100" type="VARCHAR"/></table>

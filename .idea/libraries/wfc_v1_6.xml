@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="wfc-v1.6">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/wfc-v1.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

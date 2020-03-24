@@ -1,0 +1,5 @@
+idea 创建java web 项目参考：https://blog.csdn.net/YOUAREHANDSOME/article/details/104172082
+
+jar 包引入参考：https://www.cnblogs.com/xuezhajun/p/7687230.html
+
+自动生成dao需要用到的最小单位的jar位于lib.bak文件夹中

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table name="T_PERMISSION"><field name="ID" nullable="false" size="10" type="INT"/><field name="PERMISSION_NAME" nullable="true" size="50" type="VARCHAR"/><field name="REMARKS" nullable="true" size="1000" type="VARCHAR"/></table>

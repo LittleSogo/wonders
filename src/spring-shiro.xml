@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                http://www.springframework.org/schema/context
+                 http://www.springframework.org/schema/context/spring-context-3.2.xsd
+                http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+                 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- shiro-all.jar
+    filterChainDefinitions：apache
+    shiro通过filterChainDefinitions参数来分配链接的过滤，
+    资源过滤有常用的以下几个参数：
+    authc 表示需要认证的链接
+    perms[/url] 表示该链接需要拥有对应的资源/权限才能访问
+    roles[admin] 表示需要对应的角色才能访问
+    perms[admin:url] 表示需要对应角色的资源才能访问
+
+    -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager" />
+        <property name="loginUrl" value="/toLogin" />
+        <!--<property name="loginUrl" value="${ssoServiceUrl}"/>-->
+        <property name="successUrl" value="/home" />
+        <property name="unauthorizedUrl" value="/403" />
+
+       <!-- <property name="filters">
+            <map>
+                <entry key="authc" value-ref="ssoFilter"/>
+            </map>
+        </property>-->
+
+        <property name="filterChainDefinitions">
+            <value>
+                /toLogin = authc <!-- authc 表示需要认证才能访问的页面 -->
+               <!-- 系统中的所有链接都需要通过登录后，登录成功后跳转到对应页面
+                /** = authc-->
+                <!--/home = authc, perms[/home] --> <!-- perms 表示需要该权限才能访问的页面 -->
+                <!--/** = authc-->
+            </value>
+        </property>
+    </bean>
+
+    <!--自定义的单点登录过滤器-->
+    <!--<bean id="ssoFilter" class="com.wonders.shiro.sso.SSOFilter"/>-->
+
+
+    <bean id="myShiroRealm" class="com.wonders.shiro.MyShiroRealm">
+        <!-- businessManager 用来实现用户名密码的查询 -->
+        <property name="accountService" ref="accountService" />
+    </bean>
+    <!-- shiro-all.jar -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="myShiroRealm"></property>
+       <!-- 配置sessionManager
+        <property name="sessionManager" ref="sessionManager"/>-->
+     </bean>
+
+    <bean id="accountService" class="com.wonders.service.impl.AccountServiceImpl"></bean>
+
+    <!-- <bean id="shiroCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManager" ref="cacheManager" /> </bean> -->
+
+    <!--shiro 对于session生命周期的管理
+    <bean id="sessionManager" class="org.apache.shiro.session.mgt.DefaultSessionManager">
+        <property name="sessionDAO" ref="redisSessionDao"/>
+    </bean>-->
+
+    <!--改成自定义的sessionManager-->
+
+    <bean id="sessionManager" class="com.wonders.redis.CustomSessionManager">
+        <property name="sessionDAO" ref="redisSessionDao"/>
+    </bean>
+
+    <bean id="redisSessionDao" class="com.wonders.redis.RedisSessionDao"/>
+</beans>

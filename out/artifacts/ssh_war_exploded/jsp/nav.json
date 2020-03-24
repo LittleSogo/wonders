@@ -1,0 +1,19 @@
+[
+  {
+    "text" : "党务管理",
+    "children" :[
+      {
+        "text" : "党员管理",
+        "url" : "https://localhost:8087/easyui/partyMember/getPartyMemberList"
+      },
+      {
+        "text" : "组织生活管理",
+        "url" : "https://localhost:8087/orglife"
+      },
+      {
+        "text" : "统计管理",
+        "url" : "https://localhost:8087/statistic"
+      }
+    ]
+  }
+]
